@@ -1,0 +1,87 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.background{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+.box {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+#my-todo {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#my-todo li {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+#add-todo {
+    display: flex;
+    align-items: center;
+}
+
+#add-todo .input {
+    flex: 1;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 5px 0 0 5px;
+    border-color: transparent;
+}
+.input:focus {
+    outline: none;
+}
+
+#add-todo .btn {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    border-color: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+#add-todo .btn:hover {
+    background-color: darkblue;
+}
+.btn-danger {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    border-color: transparent;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: darkred;
+}
