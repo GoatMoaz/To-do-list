@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
 }
 .background{
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg.jpg');
@@ -28,7 +29,12 @@
     border-radius: 12px;
     padding: 30px 40px;
 }
-
+ h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+}
 #my-todo {
     list-style-type: none;
     padding: 0;
@@ -43,23 +49,29 @@
     justify-content: space-between;
 }
 
-#add-todo {
+#add-todo , #search-todo{
     display: flex;
     align-items: center;
 }
-
-#add-todo .input {
+#search-todo {
+    margin-bottom: 20px;
+}
+#add-todo .input , #search-todo .input{
     flex: 1;
     height: 35px;
     padding: 0 10px;
     border-radius: 5px 0 0 5px;
     border-color: transparent;
 }
+#search-todo .input {
+    width: 320px;
+    border-radius: 5px;
+}
 .input:focus {
     outline: none;
 }
 
-#add-todo .btn {
+#add-todo .btn , #search-todo .btn{
     background-color: #007bff;
     color: #fff;
     border-radius: 0 5px 5px 0;

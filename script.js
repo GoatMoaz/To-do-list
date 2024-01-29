@@ -27,3 +27,17 @@ function createElement(){
 function reset(){
     text=add.querySelector('input[type="text"]').value='';
 }
+const searchBar=document.forms['search-todo'].querySelector('input');
+searchBar.addEventListener('keyup',function(e){
+    const term=e.target.value.toLowerCase();
+    const todos=ul.getElementsByTagName('li');
+    Array.from(todos).forEach(function(todo){
+        const title=todo.textContent;
+        if(title.toLowerCase().indexOf(term)!=-1){
+            todo.style.display='flex';
+        }
+        else{
+            todo.style.display='none';
+        }
+    });
+});
