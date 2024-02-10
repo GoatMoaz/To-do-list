@@ -1,36 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>To do list</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body>
     <div class="content">
         <div class="background"></div>
-        <h1>My List</h1>
-            <!-- form for searchbar -->
+        <section class="todo">
+            <h1>Todo List</h1>
             <form id="search-todo" class="form-inline">
-                <input type="text" class="input" placeholder="Search...">
+                <input type="text" class="input" id="search" placeholder="Search...">
             </form>
-        <div class="box">
-            <ul id="my-todo">
-                <li>Buy milk
-                    <button class="btn-danger">Delete</button>
-                </li>
-                <li>Buy eggs
-                    <button class="btn-danger">Delete</button>
-                </li>
-                <li>Buy bread
-                    <button class="btn-danger">Delete</button>
-                </li>
-            </ul>
-            <form id="add-todo" class="form-inline">
-                <input type="text" class="input" placeholder="I have to...">
-                <button type="submit" class="btn">Add</button>
+            Click on any task to see the <b>Little Details<b>
+                    <ul>
+                    </ul>
+                    <div class="addItem">
+                        <button type="button" class="button" id="newItem">
+                            <span class="button__text">Add New Task</span>
+                            <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+                                    stroke="currentColor" height="24" fill="none" class="svg">
+                                    <line y2="19" y1="5" x2="12" x1="12"></line>
+                                    <line y2="12" y1="12" x2="19" x1="5"></line>
+                                </svg></span>
+                        </button>
+                    </div>
+        </section>
+        <dialog class="addDialog">
+            <div class="close">×</div>
+            <h2>Add Task</h2>
+            <form id="add-todo">
+                <div class="form-control">
+                    <input class="input input-alt" placeholder="Title" id="title" type="text" required>
+                    <span class="input-border input-border-alt"></span>
+                </div>
+                <div class="form-control">
+                    <input class="input input-alt" placeholder="Desription" id="description" type="text" required>
+                    <span class="input-border input-border-alt"></span>
+                </div>
+                <div class="form-control">
+                    <input class="input input-alt" placeholder="" id="date" type="date" required>
+                    <span class="input-border input-border-alt"></span>
+                </div>
+                <div class="radio-inputs">
+                    <label class="radio">
+                        <input type="radio" id="high" name="radio" checked="">
+                        <span class="name">High</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" id="medium" name="radio">
+                        <span class="name">Medium</span>
+                    </label>
+
+                    <label class="radio">
+                        <input type="radio" id="low" name="radio">
+                        <span class="name">Low</span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <input class="input input-alt" placeholder="Notes" id="notes" type="text" required>
+                    <span class="input-border input-border-alt"></span>
+                </div>
             </form>
-        </div>
-     </div>
+            <div class="addItem">
+                <button type="submit" class="button" id="addItem">
+                    <span class="button__text">Add Task</span>
+                    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
+                            stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"
+                            height="24" fill="none" class="svg">
+                            <line y2="19" y1="5" x2="12" x1="12"></line>
+                            <line y2="12" y1="12" x2="19" x1="5"></line>
+                        </svg></span>
+                </button>
+            </div>
+
+        </dialog>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
