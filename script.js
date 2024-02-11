@@ -50,11 +50,12 @@ function projectController() {
     const btnClose = document.querySelectorAll(".close");
     Array.from(btnClose).forEach((btn) => {
       btn.addEventListener("click", () => {
+        resetInput();
         btn.parentElement.close();
       });
     });
-    const btnAdd = document.querySelector("#addItem");
-    btnAdd.addEventListener("click", () => {
+    document.forms[1].addEventListener("submit", function (e) {
+      e.preventDefault();
       loadFromInput();
       document.querySelector(".addDialog").close();
     });
@@ -62,13 +63,33 @@ function projectController() {
   const btnDetail = document.querySelectorAll(".details");
   Array.from(btnDetail).forEach((btn) => {
     btn.addEventListener("click", () => {
-      btn.parentElement.nextElementSibling.showModal();
-      const btnClose = document.querySelectorAll(".close");
-      Array.from(btnClose).forEach((btn) => {
-        btn.addEventListener("click", () => {
-          btn.parentElement.close();
-        });
+      const modal = btn.parentElement.nextElementSibling;
+      modal.showModal();
+      modal.addEventListener("click", (e) => {
+        if (e.target.tagName === "BUTTON") {
+          // Handle delete button click
+          e.target.parentElement.close();
+          e.target.parentElement.previousElementSibling.remove();
+          e.target.parentElement.remove();
+        } else if (e.target.classList.contains("close")) {
+          // Handle close button click
+          e.target.parentElement.close();
+        }
       });
+    });
+  });
+  const searchBar = document.forms["search-todo"].querySelector("input");
+  searchBar.addEventListener("keyup", function (e) {
+    const ul = document.querySelector(".todo ul");
+    const term = e.target.value.toLowerCase();
+    const todos = ul.getElementsByTagName("li");
+    Array.from(todos).forEach(function (todo) {
+      const title = todo.firstChild.textContent;
+      if (title.toLowerCase().indexOf(term) != -1) {
+        todo.style.display = "flex";
+      } else {
+        todo.style.display = "none";
+      }
     });
   });
 }
@@ -80,6 +101,9 @@ function loadFromInput() {
   const medium = document.querySelector("#medium").checked;
   const notes = document.querySelector("#notes").value;
   let priority;
+  if (title === "" || description === "" || date === "") {
+    return;
+  }
   if (high === true) {
     priority = "high";
   } else if (medium === true) {
@@ -94,12 +118,18 @@ function loadFromInput() {
   const btnDetail = document.querySelectorAll(".details");
   Array.from(btnDetail).forEach((btn) => {
     btn.addEventListener("click", () => {
-      btn.parentElement.nextElementSibling.showModal();
-      const btnClose = document.querySelectorAll(".close");
-      Array.from(btnClose).forEach((btn) => {
-        btn.addEventListener("click", () => {
-          btn.parentElement.close();
-        });
+      const modal = btn.parentElement.nextElementSibling;
+      modal.showModal();
+      modal.addEventListener("click", (e) => {
+        if (e.target.tagName === "BUTTON") {
+          // Handle delete button click
+          e.target.parentElement.close();
+          e.target.parentElement.previousElementSibling.remove();
+          e.target.parentElement.remove();
+        } else if (e.target.classList.contains("close")) {
+          // Handle close button click
+          e.target.parentElement.close();
+        }
       });
     });
   });
@@ -112,5 +142,4 @@ function resetInput() {
   document.querySelector("#medium").checked = false;
   document.querySelector("#notes").value = "";
 }
-
 projectController();
